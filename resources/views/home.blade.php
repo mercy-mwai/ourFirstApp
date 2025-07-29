@@ -11,9 +11,9 @@
         
         <form action="/register" method="POST">
             @csrf
-            <input type="text" placholder="name" />
-            <input type="email" placholder="Email" />
-            <input type="password" placholder="Password" />
+            <input name="name" type="text" placholder="name" />
+            <input name="email" type="email" placholder="Email" />
+            <input name="password" type="password" placholder="Password" />
             <button>Register</button>
         </form>
     </div>
