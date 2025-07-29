@@ -6,9 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <div style= "border:3px solid black;  padding: 20px;  ">
+@auth
+    <p>Congrats you are logged in</p>
+@else 
+ <div style= "border:3px solid black;padding: 20px">
         <h2>Register</h2>
-        
         <form action="/register" method="POST">
             @csrf
             <input name="name" type="text" placeholder="name" />
@@ -17,5 +19,8 @@
             <button>Register</button>
         </form>
     </div>
+@endauth
+
+   
 </body>
 </html>
