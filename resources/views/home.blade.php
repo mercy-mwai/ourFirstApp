@@ -6,6 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello<h1>
+    <div style= "border:3px-solid-black">
+        <h2>Register</h2>
+        
+        <form action="/register" method="POST">
+            @csrf
+            <input type="text" placholder="name" />
+            <input type="email" placholder="Email" />
+            <input type="password" placholder="Password" />
+            <button>Register</button>
+        </form>
+    </div>
 </body>
 </html>
