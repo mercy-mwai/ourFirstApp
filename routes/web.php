@@ -8,3 +8,4 @@ Route::get('/', function () {
 });
 Route::post('/register',[userController::class,'register']
 );
+Route::post('/logout',[]);
