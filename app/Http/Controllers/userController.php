@@ -8,17 +8,42 @@ use Illuminate\Validation\Rule;
 
 class userController extends Controller
 {
-    public function login(Request $request){
-        $incomingFields= $request->validate([
-            'name'=>'required',
-            'password'=>'required'
-        ]);
+    // public function login(Request $request){
+    //     $incomingFields= $request->validate([
+    //         'name'=>'required',
+    //         'password'=>'required'
+    //     ]);
 
-        if(auth()->attempt(['name'=>$incomingFields['loginname'], 'password'=>$incomingFields['loginpassword']])){
-            $request->session()->regenerate();
-        }
-        return redirect('/');
+    //     if(auth()->attempt([
+    //         'name'=>$incomingFields['loginname'], 
+    //         'password'=>$incomingFields['loginpassword']]))
+    //         {
+    //         $request->session()->regenerate();
+    //         return redirect('/');
+    //     }
+        
+    // }
+
+    public function login(Request $request){
+    $incomingFields = $request->validate([
+        'loginname' => 'required',
+        'loginpassword' => 'required'
+    ]);
+
+    if (auth()->attempt([
+        'name' => $incomingFields['loginname'],
+        'password' => $incomingFields['loginpassword']
+    ])) {
+        $request->session()->regenerate();
+        return redirect('/'); // ✅ Redirect only if login is successful
     }
+
+    // ❌ If login fails, return back with error
+    return back()->withErrors([
+        'loginname' => 'The provided credentials do not match our records.',
+    ])->onlyInput('loginname');
+}
+
 
     public function logout(){
         auth()->logout();
