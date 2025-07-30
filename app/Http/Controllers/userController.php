@@ -35,10 +35,9 @@ class userController extends Controller
         'password' => $incomingFields['loginpassword']
     ])) {
         $request->session()->regenerate();
-        return redirect('/'); // ✅ Redirect only if login is successful
+        return redirect('/'); 
     }
 
-    // ❌ If login fails, return back with error
     return back()->withErrors([
         'loginname' => 'The provided credentials do not match our records.',
     ])->onlyInput('loginname');
