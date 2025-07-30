@@ -18,6 +18,7 @@
     @csrf
     <input type="text" name="title" placeholder="post title"/>
     <textarea name="body" placeholder="body content..."></textarea>
+    <button>Save post</button>
     </form>
 </div>
 

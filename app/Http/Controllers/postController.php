@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class postController extends Controller
 {
-    public function createPost(){
+    public function createPost(Request $request){
         $incomingFields=$request->validate([
             'title'=>'required',
             'password'=>'required',
@@ -18,5 +18,6 @@ class postController extends Controller
         $incomingFields['user_id']=auth()->id();
 
         Post::create($incomingFields);
+        return redirect('/');
     }
 }
